@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Treino Intervalado</title>
+  <style>
+    html, body {
+      font-family: 'Segoe UI', sans-serif; 
+      background: #ffffff;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      width: 100%;
+      background: #FF1493;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5em;
+    }
+    .menu {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      background: #ffccd5;
+      padding: 15px;
+      width: 100%;
+      max-width: 700px;
+    }
+    .menu button {
+      background: #FF1493;
+      border: none;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 18px;
+      min-width: 70px;
+      transition: background-color 0.3s ease;
+    }
+    .menu button.active {
+      background: #FF69B4;
+      font-weight: bold;
+    }
+    .container {
+      flex: 1;
+      width: 90%;
+      max-width: 700px;
+      height: 500px;
+      padding: 20px;
+      margin: 20px auto;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #ffffffdd;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    #steps {
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+    .step {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+      font-size: 1.2em;
+    }
+    .step.active {
+      display: block;
+    }
+    .step.done {
+      background: #d0f0c0;
+      color: #555;
+      text-decoration: line-through;
+    }
+    .step p {
+      margin: 0 0 15px;
+    }
+    button {
+      background: #FF1493;
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background:#FF69B4;
+    }
+    .footer {
+      text-align: center;
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>Treino Diário</header>
+
+  <div class="menu" id="menuDias">
+    <button onclick="selecionarDia(this, 'Dom')">Domingo</button>
+    <button onclick="selecionarDia(this, 'Seg')">Segunda</button>
+    <button onclick="selecionarDia(this, 'Ter')">Terça</button>
+    <button onclick="selecionarDia(this, 'Qua')">Quarta</button>
+    <button onclick="selecionarDia(this, 'Qui')">Quinta</button>
+    <button onclick="selecionarDia(this, 'Sex')">Sexta</button>
+    <button onclick="selecionarDia(this, 'Sab')">Sábado</button>
+  </div>
+
+  <div class="container" id="treinoContainer">
+    <div id="steps"></div>
+    <div class="footer">
+      <button onclick="resetSteps()">🔁 Reiniciar Treino</button>
+      <button onclick="voltarParaSelecao()">⬅️ Voltar para seleção de dia</button>
+    </div>
+  </div>
+
+  <script>
+    const treinos = {
+      'Dom': [
+        "3km de aquecimento (FC 125-140bpm)",
+        "Parte principal: 5x 1km forte (FC 150-170bpm) + 2’ descanso parado",
+        "2km de corrida leve"
+      ],
+      'Seg': [
+        "Mobilidade: 3 quadril, 1 tornozelo, 1 coluna torácica, 1 ombro",
+        "Estabilidade: prancha lateral 3x30” cada lado",
+        "Estabilidade: superman 3x12",
+        "Afundo com recuo 4x6 cada lado (halter)",
+        "Agachamento livre 4x6 (segurar 2” embaixo e subir forte)",
+        "Elevação pélvica unilateral 4x6 cada lado",
+        "Gêmeos em pé na máquina 4x15",
+        "Supino reto com halter 4x10", 
+        "Supino inclinado na barra 4x10",
+        "Desenvolvimento de ombro com halter 3x10"
+      ],
+      'Ter': [
+        "Mobilidade quadril: 2 exercícios 1x15 cada lado",
+        "5’ caminhada com 5° de inclinação - FC 110bpm",
+        "5’ trote com 1° de inclinação - FC 120-130bpm",
+        "Repetir 5x: 2’ a 8km/h com 8°, 1’ com 10°, 1’ caminhando, 2’ a 11-12km/h, 2’ caminhando",
+        "5’ correndo FC 130-145bpm",
+        "5’ caminhando (desaquecimento)"
+      ],
+      'Qua': [
+        "Mobilidade: 2 quadril, 1 tornozelo, 1 coluna torácica, 1 ombro",
+        "Ativação de core: Big Three (vídeo)",
+        "Afundo búlgaro 4x6 cada lado",
+        "Levantamento terra 3x6",
+        "Cadeira flexora + panturrilhas com peso corporal 4x8 + 15",
+        "Pull down 4x10",
+        "Remada unilateral com halter 4x10",
+        "Crucifixo invertido"
+      ],
+      'Qui': [
+        "Mobilidade quadril e coluna: 4 exercícios",
+        "Corrida leve 2km a 8-9km/h",
+        "5x: 500m forte (12km/h) + 2’ caminhada",
+        "Final: 500m caminhada ou até 5km",
+        "Alongamento de cadeia posterior no solo"
+      ],
+      'Sex': [
+        "Aquecimento: 2 mobilidade de ombro",
+        "Supino inclinado + tríceps francês 3x10+10",
+        "Crucifixo reto + rosca martelo 3x10+10",
+        "Puxador máquina + remada alta 3x10+10",
+        "Pull down + tríceps barra 3x10+10",
+        "Exercícios de core: prancha, prancha lateral, ponte (3x cada)"
+      ],
+      'Sab': [
+        "DESCANSO PROGRESSIVO, 24H"
+      ]
+    };
+
+    const stepsContainer = document.getElementById("steps");
+    const menuDias = document.getElementById("menuDias");
+    const treinoContainer = document.getElementById("treinoContainer");
+
+    let treinoAtual = null;
+
+    function carregarTreino(dia) {
+      treinoAtual = dia;
+      const treino = treinos[dia];
+      stepsContainer.innerHTML = "";
+      treino.forEach((etapa, i) => {
+        const div = document.createElement("div");
+        div.className = "step";
+        if (i === 0) div.classList.add("active");
+        div.innerHTML = `
+          <p>${etapa}</p>
+          <button onclick="nextStep(${i})">✅ Marcar como feito</button>
+        `;
+        stepsContainer.appendChild(div);
+      });
+    }
+
+    function nextStep(index) {
+      const allSteps = document.getElementsByClassName("step");
+      const current = allSteps[index];
+      current.classList.remove("active");
+      current.classList.add("done");
+      const next = allSteps[index + 1];
+      if (next) {
+        next.classList.add("active");
+      } else {
+        stepsContainer.innerHTML = `
+          <div class="step active" style="text-align:center; font-size:1.4em;">
+            🎉 Parabéns, mais um dia concluído! Te vejo amanhã! 🎉
+          </div>
+        `;
+      }
+    }
+
+    function resetSteps() {
+      carregarTreino(treinoAtual);
+    }
+
+    function selecionarDia(button, dia) {
+      document.querySelectorAll(".menu button").forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+      menuDias.style.display = "none";
+      treinoContainer.style.display = "flex";
+      carregarTreino(dia);
+    }
+
+    function voltarParaSelecao() {
+      treinoContainer.style.display = "none";
+      menuDias.style.display = "flex";
+      stepsContainer.innerHTML = "";
+      treinoAtual = null;
+      document.querySelectorAll(".menu button").forEach(btn => btn.classList.remove("active"));
+    }
+  </script>
+
+</body>
+</html>
