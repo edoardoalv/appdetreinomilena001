@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Treino Intervalado</title>
+ <title>Plano de Treinos Semanal - Treino Intervalado</title>
   <style>
     html, body {
       font-family: 'Segoe UI', sans-serif; 
@@ -13,6 +13,23 @@
       height: 100%;
       width: 100%;
     }
+    :root {
+  --pink: #FF1493;
+  --pink-light: #FF69B4;
+  --pink-bg: #ffccd5;
+}
+header {
+  background: var(--pink);
+}
+.menu {
+  background: var(--pink-bg);
+}
+.menu button {
+  background: var(--pink);
+}
+.menu button.active {
+  background: var(--pink-light);
+}
     body {
       display: flex;
       flex-direction: column;
@@ -24,7 +41,7 @@
       color: white;
       padding: 20px;
       text-align: center;
-      font-size: 1.5em;
+      font-size: 1cm;
     }
     .menu {
       display: flex;
@@ -43,7 +60,7 @@
       padding: 15px 25px;
       border-radius: 12px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 20px;
       min-width: 70px;
       transition: background-color 0.3s ease;
     }
@@ -51,6 +68,20 @@
       background: #FF69B4;
       font-weight: bold;
     }
+    @media (max-width: 480px) {
+  .menu button {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  .step {
+    font-size: 1em;
+    padding: 15px;
+  }
+}
+button:focus {
+  outline: 2px solid #FF69B4;
+  outline-offset: 2px;
+}
     .container {
       flex: 1;
       width: 90%;
@@ -78,7 +109,7 @@
       margin-bottom: 20px;
       display: none;
       animation: fadeIn 0.3s ease-in-out;
-      font-size: 1.2em;
+      font-size: 2.5em;
     }
     .step.active {
       display: block;
@@ -95,9 +126,9 @@
       background: #FF1493;
       color: white;
       border: none;
-      padding: 14px 20px;
+      padding: 40px 20px;
       border-radius: 10px;
-      font-size: 16px;
+      font-size: 30px;
       cursor: pointer;
       width: 100%;
       transition: background-color 0.3s ease;
@@ -144,7 +175,12 @@
     const treinos = {
       'Dom': [
         "3km de aquecimento (FC 125-140bpm)",
-        "Parte principal: 5x 1km forte (FC 150-170bpm) + 2’ descanso parado",
+        "Parte principal: REPETIR 5X",
+        "1km forte (FC 150-170bpm) + 2’ descanso parado",
+        "1km forte (FC 150-170bpm) + 2’ descanso parado",
+        "1km forte (FC 150-170bpm) + 2’ descanso parado",
+        "1km forte (FC 150-170bpm) + 2’ descanso parado",
+        "1km forte (FC 150-170bpm) + 2’ descanso parado",
         "2km de corrida leve"
       ],
       'Seg': [
