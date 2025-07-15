@@ -1,40 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
- <title>Plano de Treinos Semanal - Treino Intervalado</title>
+  <title>Plano de Treinos Semanal - Treino Intervalado</title>
   <style>
-    html, body {
-      font-family: 'Segoe UI', sans-serif; 
+    html,
+    body {
+      font-family: 'Segoe UI', sans-serif;
       background: #ffffff;
       margin: 0;
       padding: 0;
       height: 100%;
       width: 100%;
     }
+
     :root {
-  --pink: #FF1493;
-  --pink-light: #FF69B4;
-  --pink-bg: #ffccd5;
-}
-header {
-  background: var(--pink);
-}
-.menu {
-  background: var(--pink-bg);
-}
-.menu button {
-  background: var(--pink);
-}
-.menu button.active {
-  background: var(--pink-light);
-}
+      --pink: #FF1493;
+      --pink-light: #FF69B4;
+      --pink-bg: #ffccd5;
+    }
+
+    header {
+      background: var(--pink);
+    }
+
+    .menu {
+      background: var(--pink-bg);
+    }
+
+    .menu button {
+      background: var(--pink);
+    }
+
+    .menu button.active {
+      background: var(--pink-light);
+    }
+
     body {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
+
     header {
       width: 100%;
       background: #FF1493;
@@ -43,6 +52,7 @@ header {
       text-align: center;
       font-size: 1cm;
     }
+
     .menu {
       display: flex;
       justify-content: center;
@@ -53,6 +63,7 @@ header {
       width: 100%;
       max-width: 700px;
     }
+
     .menu button {
       background: #FF1493;
       border: none;
@@ -64,24 +75,29 @@ header {
       min-width: 70px;
       transition: background-color 0.3s ease;
     }
+
     .menu button.active {
       background: #FF69B4;
       font-weight: bold;
     }
+
     @media (max-width: 480px) {
-  .menu button {
-    padding: 10px 15px;
-    font-size: 14px;
-  }
-  .step {
-    font-size: 1em;
-    padding: 15px;
-  }
-}
-button:focus {
-  outline: 2px solid #FF69B4;
-  outline-offset: 2px;
-}
+      .menu button {
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+
+      .step {
+        font-size: 1em;
+        padding: 15px;
+      }
+    }
+
+    button:focus {
+      outline: 2px solid #FF69B4;
+      outline-offset: 2px;
+    }
+
     .container {
       flex: 1;
       width: 90%;
@@ -94,34 +110,40 @@ button:focus {
       justify-content: space-between;
       background: #ffffffdd;
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
+
     #steps {
       flex: 1;
       overflow-y: auto;
       padding-right: 10px;
     }
+
     .step {
       background: white;
       border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       padding: 20px;
       margin-bottom: 20px;
       display: none;
       animation: fadeIn 0.3s ease-in-out;
       font-size: 2.2em;
     }
+
     .step.active {
       display: block;
     }
+
     .step.done {
       background: #d0f0c0;
       color: #555;
       text-decoration: line-through;
     }
+
     .step p {
       margin: 0 0 15px;
     }
+
     button {
       background: #FF1493;
       color: white;
@@ -133,9 +155,11 @@ button:focus {
       width: 100%;
       transition: background-color 0.3s ease;
     }
+
     button:hover {
-      background:#FF69B4;
+      background: #FF69B4;
     }
+
     .footer {
       text-align: center;
       margin-top: auto;
@@ -143,12 +167,21 @@ button:focus {
       flex-direction: column;
       gap: 12px;
     }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
+
 <body>
 
   <header>Treino Diário</header>
@@ -191,43 +224,45 @@ button:focus {
         "Agachamento livre 4x6 (segurar 2” embaixo e subir forte)",
         "Elevação pélvica unilateral 4x6 cada lado",
         "Gêmeos em pé na máquina 4x15",
-        "Supino reto com halter 4x10", 
+        "Supino reto com halter 4x10",
         "Supino inclinado na barra 4x10",
         "Desenvolvimento de ombro com halter 3x10"
       ],
       'Ter': [
         "Mobilidade quadril: 2 exercícios 1x15 cada lado",
         "5’ caminhada com 5° de inclinação - FC 110bpm",
-        "5’ trote com 1° de inclinação - FC 120-130bpm",
-        "AGORA Repetir 5x: ",
-        "2’ a 8km/h com 8° de inclinação,",
-        " 1’ com 10°", 
-        "1’ caminhando", 
-        "2’ a 11-12km/h",
-        "2’ caminhando",
-        "2’ a 8km/h com 8° de inclinação,",
-        " 1’ com 10°", 
-        "1’ caminhando", 
-        "2’ a 11-12km/h",
-        "2’ caminhando",
-        "2’ a 8km/h com 8° de inclinação,",
-        " 1’ com 10°", 
-        "1’ caminhando", 
-        "2’ a 11-12km/h",
-        "2’ caminhando",
-        "2’ a 8km/h com 8° de inclinação,",
-        " 1’ com 10°", 
-        "1’ caminhando", 
-        "2’ a 11-12km/h",
-        "2’ caminhando",
-        "2’ a 8km/h com 8° de inclinação,",
-        " 1’ com 10°", 
-        "1’ caminhando", 
-        "2’ a 11-12km/h",
-        "2’ caminhando",
-        "AGORA PARA FINALIZAR",
-        "5’ correndo FC 130-145bpm",
-        "5’ caminhando (desaquecimento)"
+        "5’ trote moderado com 1° de inclinação - FC 120-130bpm",
+        "AGORA Repetir 7x: ",
+        "2' correndo com 5° de inclinação",
+        "1' de tiro de forte sem inclinação",
+        "2' caminhada com 5° de inclinação",
+
+        "2' correndo com 5° de inclinação",
+        "1' de tiro de forte sem inclinação",
+        "2' caminhada com 5° de inclinação",
+
+        "2' correndo com 5° de inclinação",
+        "1' de tiro de forte sem inclinação",
+        "2' caminhada com 5° de inclinação",
+
+        "2' correndo com 5° de inclinação",
+        "1' de tiro de forte sem inclinação",
+        "2' caminhada com 5° de inclinação",
+
+        "2' correndo com 5° de inclinação",
+        "1' de tiro de forte sem inclinação",
+        "2' caminhada com 5° de inclinação",
+
+        "2' correndo com 5° de inclinação",
+        "1' de tiro de forte sem inclinação",
+        "2' caminhada com 5° de inclinação",
+
+        "2' correndo com 5° de inclinação",
+        "1' de tiro de forte sem inclinação",
+        "2' caminhada com 5° de inclinação",
+
+        "5' caminhando (desaquecimento)",
+
       ],
       'Qua': [
         "Mobilidade: 2 quadril, 1 tornozelo, 1 coluna torácica, 1 ombro",
@@ -325,4 +360,5 @@ button:focus {
   </script>
 
 </body>
+
 </html>
